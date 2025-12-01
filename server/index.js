@@ -12,9 +12,13 @@ const problemRoute=require("./routes/Problem");
 const submitRoute=require("./routes/Submission");
 
 app.use(cors({
-        origin:"http://localhost:5173",
-        credentials:true
+    origin: [
+        "http://localhost:5173",
+        "https://dsa-hub-livid.vercel.app"
+    ],
+    credentials: true
 }));
+
 
 
 app.use(express.json());
