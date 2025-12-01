@@ -17,7 +17,6 @@ import Signup from "./pages/Signup"
      import './App.css' 
      import {Routes,Route} from "react-router" 
      
-
 function App() {
   return (
     <div className="w-screen h-screen flex flex-col">
