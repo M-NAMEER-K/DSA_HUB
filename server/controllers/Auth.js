@@ -108,10 +108,15 @@ const login=async (req,res)=>{
                      const options={expiresIn:60*60};
                      const token= jwt.sign(payload,process.env.JWT_SECRET_KEY,options);
 
-                     res.cookie("token",token,{ httpOnly: true,    // cannot be accessed via JS (safer)
-                                                secure: false, 
-                                                 sameSite: "lax", 
-                                                maxAge:60*60*1000});
+                     
+
+                                                res.cookie("token", token, {
+  httpOnly: true,
+  secure: true,            // Required on HTTPS for cross-site cookies
+  sameSite: "none",        // Required when frontend and backend are on different domains
+  maxAge: 60 * 60 * 1000,
+});
+
                       
                       user.password=undefined;
                 return res.status(200).json({
